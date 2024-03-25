@@ -1,7 +1,6 @@
 import React from "react";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails, publishedAt } = snippet;
 
@@ -15,13 +14,11 @@ const VideoCard = ({ info }) => {
         />
         <div className="mt-2 flex flex-col ">
           <h1 className="font-semibold text-lg text-zinc-800 tracking-tight leading-5">
-            {title.slice(0,48)}...
+            {title.slice(0, 40)}...
           </h1>
-          <div className="flex gap-x-7">
-            <h1>{channelTitle}</h1>
-            <h1>{statistics.viewCount} views</h1>
-          </div>
-          <h1>{publishedAt}</h1>
+
+          <h1 className="text-[1vw] font-bold text-black leading-4 mt-1">{channelTitle}</h1>
+          <h1>{statistics.viewCount} views</h1>
         </div>
       </div>
     </div>

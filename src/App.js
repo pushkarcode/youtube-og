@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className="w-screen h-screen bg-[#f6ebf2d6]">
+      <div className="w-screen min-h-screen bg-[#f6ebf2d6]">
         <Head />
         <RouterProvider router={appRouter} />
       </div>

@@ -13,4 +13,10 @@
 - Appliying routing in body 
 - create watch page
 - Some adjucsment on sidebar functionality
-- 
+- Creating Searchbar 
+- Adding debouncing on searchbar functionality
+- Debouncing on seachbar lessthen 200ms
+- Appliying caching on seachbar
+- Creating a effective searchbar
+- Building cache that restricts the size only [100]
+- Building n level Comments
