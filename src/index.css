@@ -18,3 +18,14 @@
   background-color: rgba(149, 130, 130, 0.73);
   border-radius: 2px;
 }
+
+.golu::after {
+  content: "IN";
+  font-size: .7vw;
+  position: absolute;
+  top: 2%;
+  color: orangered;
+}
+.btn::-webkit-scrollbar {
+  display: none;
+}
