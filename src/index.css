@@ -29,3 +29,6 @@
 .btn::-webkit-scrollbar {
   display: none;
 }
+.active {
+  color: rgba(255, 0, 0, 0.638);
+}

@@ -27,7 +27,7 @@ const Head = () => {
       } else {
         getSearchSuggestions();
       }
-    }, 200);
+    }, 200  );
     return () => {
       clearTimeout(timer);
     };

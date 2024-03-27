@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 
-const Body = () => {
+const Body = ({ categroy, setCategroy }) => {
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar categroy={categroy} setCategroy={setCategroy} />
       <Outlet />
     </div>
   );

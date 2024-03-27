@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "./components/Head";
 import Body from "./components/Body";
 import Watchpage from "./components/Watchpage";
@@ -7,14 +7,16 @@ import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 const App = () => {
+ const [categroy, setCategroy] = useState(0);
+
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
+      element: <Body  categroy={categroy} setCategroy={setCategroy} />,
       children: [
         {
           path: "/",
-          element: <MainContainer />,
+          element: <MainContainer categroy={categroy} />,
         },
         {
           path: "watch",

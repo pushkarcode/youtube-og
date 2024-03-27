@@ -1,4 +1,6 @@
 import React from "react";
+import { value_converter } from "../utils/data";
+import moment from "moment";
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
@@ -17,8 +19,13 @@ const VideoCard = ({ info }) => {
             {title.slice(0, 40)}...
           </h1>
 
-          <h1 className="text-[1vw] font-bold text-black leading-4 mt-1">{channelTitle}</h1>
-          <h1>{statistics.viewCount} views</h1>
+          <h1 className="text-[1vw] font-bold text-black leading-4 mt-1 mb-1">
+            {channelTitle}
+          </h1>
+          <div className="flex items-center gap-x-5">
+            <h1>{value_converter(statistics.viewCount)} views</h1>
+            <p>{moment(publishedAt).fromNow()}</p>
+          </div>
         </div>
       </div>
     </div>
