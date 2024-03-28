@@ -20,3 +20,5 @@
 - Creating a effective searchbar
 - Building cache that restricts the size only [100]
 - Building n level Comments
+- Crearting watch page and comment section
+- Recommende video suggestion
