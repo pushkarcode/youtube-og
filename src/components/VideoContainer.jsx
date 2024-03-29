@@ -17,7 +17,6 @@ const VideoContainer = ({ categroy }) => {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${categroy}&key=${API_KEY}`
     );
     const raw = await data.json();
-    console.log(raw.items);
     setVideos(raw?.items);
   };
 

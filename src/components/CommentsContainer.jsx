@@ -1,31 +1,27 @@
 import React from "react";
 import Comment from "./Comment";
 
+
 const CommentsData = [
   {
     name: "Pushkar shamra",
     text: "lorem adf sdfk asdfl  alfskc alfdk c",
     replies: [
       {
-        name: "Pushkar shamra",
-        text: "lorem adf sdfk asdfl  alfskc alfdk c",
-        replies: [],
-      },
-      {
-        name: "Pushkar shamra",
+        name: "Spana Anjana",
         text: "lorem adf sdfk asdfl  alfskc alfdk c",
         replies: [
           {
-            name: "Pushkar shamra",
+            name: "Himanshu Prajapat",
             text: "lorem adf sdfk asdfl  alfskc alfdk c",
             replies: [],
           },
           {
-            name: "Pushkar shamra",
+            name: "Aauysh Hinwar",
             text: "lorem adf sdfk asdfl  alfskc alfdk c",
             replies: [
               {
-                name: "Pushkar shamra",
+                name: "golu",
                 text: "lorem adf sdfk asdfl  alfskc alfdk c",
                 replies: [],
               },
@@ -33,26 +29,21 @@ const CommentsData = [
           },
         ],
       },
+      {
+        name: "vishal hinwar",
+        text: "actually this video helpful enough",
+        replies: [],
+      },
     ],
-  },
-  {
-    name: "Pushkar shamra",
-    text: "lorem adf sdfk asdfl  alfskc alfdk c",
-    replies: [],
-  },
-  {
-    name: "Pushkar shamra",
-    text: "lorem adf sdfk asdfl  alfskc alfdk c",
-    replies: [],
   },
 ];
 
 const CommentsList = ({ comments }) => {
   return comments?.map((comment, index) => (
-    <div  key={index}>
+    <div key={index}>
       <Comment data={comment} />
       <div className="pl-5 border border-l-black ml-5">
-       <CommentsList comments={comment.replies}/>
+        <CommentsList comments={comment.replies} />
       </div>
     </div>
   ));

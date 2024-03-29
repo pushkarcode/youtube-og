@@ -5,7 +5,7 @@ import moment from "moment";
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails, publishedAt } = snippet;
-
+  
   return (
     <div>
       <div className="p-4 w-[16vw] ">

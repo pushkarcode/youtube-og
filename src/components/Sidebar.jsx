@@ -22,7 +22,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ categroy, setCategroy }) => {
-  console.log(categroy);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   // ! Early return pattern

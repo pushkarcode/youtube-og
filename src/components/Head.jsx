@@ -8,6 +8,7 @@ import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constant";
 import { CiSearch } from "react-icons/ci";
 import { cacheResults } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,7 +28,7 @@ const Head = () => {
       } else {
         getSearchSuggestions();
       }
-    }, 200  );
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
@@ -54,7 +55,7 @@ const Head = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3  ">
+    <div className="flex items-center justify-between p-3 ">
       <div className="flex items-center text-2xl">
         <span
           className="cursor-pointer px-2 py-2 hover:bg-zinc-400 transition-all ease-linear rounded-full"
