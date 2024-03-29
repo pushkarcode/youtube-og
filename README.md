@@ -20,7 +20,3 @@
 - Creating a effective searchbar
 - Building cache that restricts the size only [100]
 - Building n level Comments
-- Creating category section 
-- Aading multiple option in sidebar
-- Aading channel details
-- crearting recommende videos cards
