@@ -19,11 +19,12 @@ const VideoContainer = ({ categroy }) => {
     const raw = await data.json();
     setVideos(raw?.items);
   };
+  
 
   return !isMenuOpen ? (
     <div className="flex flex-wrap w-[98.9vw] ml-4 mx-auto h-[84vh] overflow-y-scroll ">
       {videos?.map((video) => (
-        <Link key={video.id} to={"/watch?v=" + video.id}>
+        <Link key={video.id} to={`/watch?v=${video.id}/id=${video.snippet.categoryId}`}>
           <VideoCard info={video} />
         </Link>
       ))}
@@ -31,7 +32,7 @@ const VideoContainer = ({ categroy }) => {
   ) : (
     <div className="flex flex-wrap w-[87vw] mx-auto h-[84vh] overflow-y-scroll ">
       {videos?.map((video) => (
-        <Link key={video.id} to={"/watch?v=" + video.id}>
+        <Link key={video.id} to={`/watch?v=${video.id}/id=${video.snippet.categoryId}`}>
           <VideoCard info={video} />
         </Link>
       ))}

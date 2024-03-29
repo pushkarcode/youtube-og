@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { BiDislike } from "react-icons/bi";
 import { PiShareFatLight } from "react-icons/pi";
@@ -32,11 +31,10 @@ const Watchpage = () => {
 
     // fetcing comments
     const commentsData = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${searchParams.get("v")}&key=${API_KEY}`
+      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${searchParams.get("v").slice(0,11)}&key=${API_KEY}`
     );
     const raw1 = await commentsData.json();
     setCommentData(raw1.items);
-    console.log(raw1);
   };
 
   const videoData = useFetcVideoData(searchParams.get("v"));
@@ -45,10 +43,11 @@ const Watchpage = () => {
     fetchchanneldata();
   }, [videoData]);
 
+
   // +"?&autoplay=1"
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden ">
       <div className="flex gap-x-2 ">
         <div className="px-16 p-2 flex flex-col ">
           <iframe
@@ -77,8 +76,8 @@ const Watchpage = () => {
                   src={channelData?.snippet?.thumbnails?.default?.url}
                   alt="logo"
                 />
-                <div className="flex flex-col justify-center gap-x-1">
-                  <p className="font-medium text-[.9vw]  w-[9vw] leading-5">
+                <div className="flex flex-col justify-center gap-x-2">
+                  <p className="font-medium text-[.9vw] w-[9vw] leading-3">
                     {videoData?.snippet?.channelTitle}
                   </p>
                   <p className="font-medium text-[.8vw]">
@@ -137,7 +136,7 @@ const Watchpage = () => {
           <div className="w-[25vw] h-[70vh] p-2 bg-gray-700 mt-2">
             <LiveChat/>
           </div>
-          <div className="w-[25vw] mt-20 bg-slate-700 h-[80vh]">
+          <div className="w-[25vw] mt-20 mr-20 h-[80vh]">
             <RecommendeVideos/>
           </div>
          </div>

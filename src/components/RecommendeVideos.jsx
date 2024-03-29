@@ -1,50 +1,57 @@
-import React from 'react'
-import logo from "../assets/logo1.png"
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { API_KEY } from "../utils/constant";
+import { value_converter } from "../utils/data";
 
-const RecommendeVideos = () => {
+const RecommendeVideos = ({ data }) => {
   const [searchParams] = useSearchParams();
-  searchParams.get("v")
+  const [recoData, setRecoData] = useState([]);
+
+  const fetchrecommededata = async () => {
+    const data = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%20&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=${searchParams
+        .get("v")
+        ?.slice(-2)}&key=${API_KEY}`
+    );
+    const raw = await data.json();
+    setRecoData(raw?.items);
+    console.log(raw?.items);
+  };
+
+  useEffect(() => {
+    fetchrecommededata();
+  }, []);
 
   return (
-   <>
-     <div className='flex items-start gap-x-3 py-3'>
-        <img className='w-[13vw] object-cover rounded-lg' src={logo} alt="" />
-        <div>
-            <h1 className='text-[1vw] font-normal text-zinc-900 leading-4 tracking-tight'>tile og tjhe video bro Lorem ipsum dolor sit amet, s</h1>
-            <p className='font-semibold text-sm mt-5'>channnel name</p>
-            <div className='flex mt-1 gap-x-2'>
-                <p className='font-light text-sm'>1.2m vews</p>
-                <p className='font-light text-sm'>1 month ago</p>
+    <>
+      {recoData?.map((item, index) => (
+        <Link
+          to={`/watch?v=${item.id}/id=${item.snippet.categoryId}`}
+          key={index}
+          className="flex items-start gap-x-3 py-3"
+        >
+          <img
+            className="w-[11vw] object-cover rounded-lg"
+            src={item?.snippet?.thumbnails.medium.url}
+            alt=""
+          />
+          <div>
+            <h1 className="text-[1vw] font-normal text-zinc-900 leading-4 tracking-tight">
+              {item?.snippet?.title.slice(0, 50)}...
+            </h1>
+            <p className="font-semibold text-sm mt-5">
+              {item?.snippet?.channelTitle}
+            </p>
+            <div className="flex mt-1 gap-x-2">
+              <p className="font-light text-sm">
+                {value_converter(item?.statistics?.viewCount)} views
+              </p>
             </div>
-        </div>
-    </div>
-    <div className='flex items-start gap-x-3'>
-        <img className='w-[13vw] object-cover rounded-lg' src={logo} alt="" />
-        <div>
-            <h1 className='text-[1vw] font-normal text-zinc-900 leading-4 tracking-tight'>tile og tjhe video bro Lorem ipsum dolor sit amet, s</h1>
-            <p className='font-semibold text-sm mt-5'>channnel name</p>
-            <div className='flex mt-1 gap-x-2'>
-                <p className='font-light text-sm'>1.2m vews</p>
-                <p className='font-light text-sm'>1 month ago</p>
-            </div>
-        </div>
-    </div>
-    <div className='flex items-start gap-x-3'>
-        <img className='w-[13vw] object-cover rounded-lg' src={logo} alt="" />
-        <div>
-            <h1 className='text-[1vw] font-normal text-zinc-900 leading-4 tracking-tight'>tile og tjhe video bro Lorem ipsum dolor sit amet, s</h1>
-            <p className='font-semibold text-sm mt-5'>channnel name</p>
-            <div className='flex mt-1 gap-x-2'>
-                <p className='font-light text-sm'>1.2m vews</p>
-                <p className='font-light text-sm'>1 month ago</p>
-            </div>
-        </div>
-    </div>
+          </div>
+        </Link>
+      ))}
+    </>
+  );
+};
 
-   </>
-    
-  )
-}
-
-export default RecommendeVideos
+export default RecommendeVideos;

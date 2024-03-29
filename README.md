@@ -20,3 +20,6 @@
 - Creating a effective searchbar
 - Building cache that restricts the size only [100]
 - Building n level Comments
+- creating video section
+- Adding comments section
+- adding recommendation section

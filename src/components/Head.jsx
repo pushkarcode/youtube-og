@@ -8,7 +8,8 @@ import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constant";
 import { CiSearch } from "react-icons/ci";
 import { cacheResults } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SearchResult from "./SearchResult";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,7 +56,7 @@ const Head = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3 ">
+    <div className="flex items-center justify-between p-3">
       <div className="flex items-center text-2xl">
         <span
           className="cursor-pointer px-2 py-2 hover:bg-zinc-400 transition-all ease-linear rounded-full"
@@ -63,10 +64,12 @@ const Head = () => {
         >
           <AiOutlineMenu />
         </span>
-        <img className="w-[2vw] ml-3" src={logo} alt="" />
-        <span className="golu font-medium ml-2 text-lg tracking-wide text-zinc-800">
-          Youtub*
-        </span>
+       
+          <img className="w-[2vw] ml-3" src={logo} alt="" />
+          <span className="golu font-medium ml-2 text-lg tracking-wide text-zinc-800">
+            Youtub*
+          </span>
+        
       </div>
 
       <div className="relative">
@@ -90,7 +93,7 @@ const Head = () => {
           <div className="absolute bg-gradient-to-r from-violet-200 to-pink-200 w-[29vw] rounded-lg left-[.6%] top-[108%]">
             {suggesition.map((s) => (
               <h1
-                key={s}
+                key={s} onClick={() => <SearchResult/>}
                 className="flex items-center gap-x-5 p-1 text-lg font-semibold text-zinc-600  mb-1 hover:bg-slate-200 "
               >
                 <span>

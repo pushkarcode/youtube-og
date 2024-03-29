@@ -5,11 +5,11 @@ import moment from "moment";
 
 const CommentBox = ({ videoData, commentData }) => {
   return (
-    <div className="p-2 w-[65vw] ">
+    <div className="p-2 w-[65vw]  ">
       <h1 className="font-bold text-xl text-zinc-800 tracking-wide">
         {value_converter(videoData?.statistics?.commentCount)} Comments
       </h1>
-      {commentData.map((item,index) => (
+      {commentData?.map((item,index) => (
       <div key={index} className="shadow-sm bg-gray-100 p-2 mt-6 rounded-lg">
         <div className="flex gap-x-3">
           <img
