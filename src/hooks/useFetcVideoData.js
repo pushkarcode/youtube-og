@@ -22,7 +22,7 @@ const useFetcVideoData = () => {
     );
     const raw = await VideoDetails_url.json();
     setVideoData(raw?.items[0]);
-    console.log(raw);
+    // console.log(raw);
   };
   return videoData;
 }

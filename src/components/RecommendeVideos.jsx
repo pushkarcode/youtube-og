@@ -15,7 +15,7 @@ const RecommendeVideos = ({ data }) => {
     );
     const raw = await data.json();
     setRecoData(raw?.items);
-    console.log(raw?.items);
+    // console.log(raw?.items);
   };
 
   useEffect(() => {

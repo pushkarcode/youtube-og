@@ -14,6 +14,7 @@ import VideoDescription from "./VideoDescription";
 import CommentBox from "./CommentBox";
 import useFetcVideoData from "../hooks/useFetcVideoData";
 import RecommendeVideos from "./RecommendeVideos";
+import ButtonList from "./ButtonList";
 
 const Watchpage = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const Watchpage = () => {
 
   return (
     <div className="overflow-x-hidden ">
-      <div className="flex gap-x-2 ">
+      <div className="flex gap-x-2  ">
         <div className="px-16 p-2 flex flex-col ">
           <iframe
             className="rounded-xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]"
