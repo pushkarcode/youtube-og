@@ -1,10 +1,9 @@
 import React from "react";
-import ButtonList from "./ButtonList";
 import VideoContainer from "./VideoContainer";
 
 const MainContainer = ({ categroy }) => {
   return (
-    <div className="overflow-y-hidden">
+    <div>
       <VideoContainer categroy={categroy} />
     </div>
   );

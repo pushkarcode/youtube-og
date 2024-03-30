@@ -14,7 +14,6 @@ import VideoDescription from "./VideoDescription";
 import CommentBox from "./CommentBox";
 import useFetcVideoData from "../hooks/useFetcVideoData";
 import RecommendeVideos from "./RecommendeVideos";
-import ButtonList from "./ButtonList";
 
 const Watchpage = () => {
   const dispatch = useDispatch();

@@ -29,7 +29,7 @@ const VideoContainer = ({ categroy }) => {
  
 
   return !isMenuOpen ? (
-    <div className="flex flex-wrap w-[99.9vw] ml-4 mx-auto h-[94vh] overflow-y-scroll ">
+    <div className="flex flex-wrap w-[98.9vw] ml-4 mx-auto h-[91vh] overflow-y-scroll ">
       {videos?.map((video) => (
         <Link
           key={video.id}
@@ -40,7 +40,7 @@ const VideoContainer = ({ categroy }) => {
       ))}
     </div>
   ) : (
-    <div className="flex flex-wrap w-[86vw] mx-auto h-[90vh] overflow-y-scroll ">
+    <div className="flex flex-wrap w-[87vw] mx-auto h-[91vh] overflow-y-scroll ">
       {videos?.map((video, index) => (
         <Link
           key={index}
