@@ -10,3 +10,5 @@ export const YOUTUBE_SEARCH_API =
 export const YOUTUBE_SEARCH =
   "https://youtube.googleapis.com/youtube/v3/search?https://www.googleapis.com/youtube/v3/search?part=snippet%2CcontentDetails%2Cstatistics&maxResults=20&q=pushkar&type=video&key=" +
   API_KEY;
+
+ export const OFF_SET_LIVECHAT = 25

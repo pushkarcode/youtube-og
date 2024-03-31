@@ -23,3 +23,5 @@
 - creating video section
 - Adding comments section
 - adding recommendation section
+- Implemented live chat
+- Implemented infinite scrolling

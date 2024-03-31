@@ -133,7 +133,7 @@ const Watchpage = () => {
           </div>
         </div>
          <div className="flex flex-col ">
-          <div className="w-[25vw] h-[70vh] p-2 bg-gray-700 mt-2">
+          <div >
             <LiveChat/>
           </div>
           <div className="w-[25vw] mt-20 mr-20 h-[80vh]">
