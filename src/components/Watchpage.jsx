@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { BiDislike } from "react-icons/bi";
 import { PiShareFatLight } from "react-icons/pi";
@@ -21,6 +21,8 @@ const Watchpage = () => {
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
   const [subscribe, setSubscribe] = useState("subscribe");
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
 
   const fetchchanneldata = async () => {
     const data = await fetch(
@@ -46,104 +48,209 @@ const Watchpage = () => {
 
   // +"?&autoplay=1"
 
-  return (
+  return isMenuOpen ? (
     <div className="overflow-x-hidden ">
-      <div className="flex gap-x-2  ">
-        <div className="px-16 p-2 flex flex-col ">
-          <iframe
-            className="rounded-xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]"
-            width="1000"
-            height="515"
-            src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
-          {/* <CommentsContainer /> */}
+    <div className="flex gap-x-2">
+      <div className="px-6 p-2 flex flex-col ">
+        <iframe
+          className="rounded-xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]"
+          width="940"
+          height="515"
+          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+        {/* <CommentsContainer /> */}
 
-          <div className="flex flex-col">
-            <div className="py-1 border-b-[1px] border-zinc-400">
-              <h1 className="font-semibold text-lg leading-6 tracking-wide py-3">
-                {videoData ? videoData?.snippet?.title : "Title Coming soon"}
+        <div className="flex flex-col w-[60vw]">
+          <div className="py-1 border-b-[1px] border-zinc-400">
+            <h1 className="font-semibold text-lg leading-6 tracking-wide py-3">
+              {videoData ? videoData?.snippet?.title : "Title Coming soon"}
+            </h1>
+          </div>
+          {/* // ? susciber info */}
+          <div className="flex items-center gap-x-[11vw] ">
+            <div className="flex gap-x-3 py-9 ">
+              <img
+                className="w-[3vw] object-cover rounded-full"
+                src={channelData?.snippet?.thumbnails?.default?.url}
+                alt="logo"
+              />
+              <div className="flex flex-col justify-center gap-x-2">
+                <p className="font-medium text-[.9vw] w-[9vw] leading-3">
+                  {videoData?.snippet?.channelTitle}
+                </p>
+                <p className="font-medium text-[.8vw]">
+                  {value_converter(channelData?.statistics?.subscriberCount)}{" "}
+                  subscriber
+                </p>
+              </div>
+              <button
+                onClick={() => setSubscribe("subscribed")}
+                className="h-10 px-3 py-1 text-zinc-800 font-medium  rounded-full bg-red-400"
+              >
+                {subscribe}
+              </button>
+            </div>
+
+            <div className="flex gap-x-4 items-center">
+              <h1 className="px-2 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <BiLike />
+                </span>
+                {value_converter(videoData?.statistics?.likeCount)}
+                <span className="border-l-[1px] border-zinc-500 px-2">
+                  <BiDislike />
+                </span>
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <PiShareFatLight />
+                </span>
+                Share
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <GoDownload />
+                </span>
+                Download
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <FaRegSave />
+                </span>
+                Save
               </h1>
             </div>
-            {/* // ? susciber info */}
-            <div className="flex items-center gap-x-[17vw] ">
-              <div className="flex gap-x-6 py-9 ">
-                <img
-                  className="w-[3vw] object-cover rounded-full"
-                  src={channelData?.snippet?.thumbnails?.default?.url}
-                  alt="logo"
-                />
-                <div className="flex flex-col justify-center gap-x-2">
-                  <p className="font-medium text-[.9vw] w-[9vw] leading-3">
-                    {videoData?.snippet?.channelTitle}
-                  </p>
-                  <p className="font-medium text-[.8vw]">
-                    {value_converter(channelData?.statistics?.subscriberCount)}{" "}
-                    subscriber
-                  </p>
-                </div>
-                <button
-                  onClick={() => setSubscribe("subscribed")}
-                  className="h-10 px-3 py-1 text-zinc-800 font-medium  rounded-full bg-red-400"
-                >
-                  {subscribe}
-                </button>
-              </div>
+          </div>
 
-              <div className="flex gap-x-4 items-center">
-                <h1 className="px-2 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
-                  <span>
-                    <BiLike />
-                  </span>
-                  {value_converter(videoData?.statistics?.likeCount)}
-                  <span className="border-l-[1px] border-zinc-500 px-2">
-                    <BiDislike />
-                  </span>
-                </h1>
-                <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
-                  <span>
-                    <PiShareFatLight />
-                  </span>
-                  Share
-                </h1>
-                <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
-                  <span>
-                    <GoDownload />
-                  </span>
-                  Download
-                </h1>
-                <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
-                  <span>
-                    <FaRegSave />
-                  </span>
-                  Save
-                </h1>
-              </div>
-            </div>
+          {/* // ! Description of video  */}
 
-            {/* // ! Description of video  */}
+         <div className="w-[60vw]  bg-zinc-200 rounded-lg p-3 px-2 ">
+         <VideoDescription videoData={videoData} />
+         </div>
 
-            <VideoDescription videoData={videoData} />
-
-            {/* {// * Comments of video} */}
-            <CommentBox videoData={videoData} commentData={commentData} />
+          {/* {// * Comments of video} */}
+          <div className="p-2 w-[60vw]  ">
+          <CommentBox  videoData={videoData} commentData={commentData} />
           </div>
         </div>
-         <div className="flex flex-col ">
-          <div >
-            <LiveChat/>
-          </div>
-          <div className="w-[25vw] mt-20 mr-20 h-[80vh]">
-            <RecommendeVideos/>
-          </div>
-         </div>
-       
       </div>
+       <div className="flex flex-col ">
+        <div >
+          <LiveChat/>
+        </div>
+        <div className="w-[25vw] mt-20 mr-20 h-[80vh]">
+          <RecommendeVideos/>
+        </div>
+       </div>
+     
     </div>
-  );
+  </div>
+  ) : (
+    <div className="overflow-x-hidden ">
+    <div className="flex gap-x-2  ">
+      <div className="px-16 p-2 flex flex-col ">
+        <iframe
+          className="rounded-xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]"
+          width="1000"
+          height="515"
+          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+        {/* <CommentsContainer /> */}
+
+        <div className="flex flex-col">
+          <div className="py-1 border-b-[1px] border-zinc-400">
+            <h1 className="font-semibold text-lg leading-6 tracking-wide py-3">
+              {videoData ? videoData?.snippet?.title : "Title Coming soon"}
+            </h1>
+          </div>
+          {/* // ? susciber info */}
+          <div className="flex items-center gap-x-[17vw] ">
+            <div className="flex gap-x-6 py-9 ">
+              <img
+                className="w-[3vw] object-cover rounded-full"
+                src={channelData?.snippet?.thumbnails?.default?.url}
+                alt="logo"
+              />
+              <div className="flex flex-col justify-center gap-x-2">
+                <p className="font-medium text-[.9vw] w-[9vw] leading-3">
+                  {videoData?.snippet?.channelTitle}
+                </p>
+                <p className="font-medium text-[.8vw]">
+                  {value_converter(channelData?.statistics?.subscriberCount)}{" "}
+                  subscriber
+                </p>
+              </div>
+              <button
+                onClick={() => setSubscribe("subscribed")}
+                className="h-10 px-3 py-1 text-zinc-800 font-medium  rounded-full bg-red-400"
+              >
+                {subscribe}
+              </button>
+            </div>
+
+            <div className="flex gap-x-4 items-center">
+              <h1 className="px-2 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <BiLike />
+                </span>
+                {value_converter(videoData?.statistics?.likeCount)}
+                <span className="border-l-[1px] border-zinc-500 px-2">
+                  <BiDislike />
+                </span>
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <PiShareFatLight />
+                </span>
+                Share
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <GoDownload />
+                </span>
+                Download
+              </h1>
+              <h1 className="px-3 py-1 rounded-full flex items-center gap-x-1 bg-zinc-300 hover:bg-zinc-400 transition-all">
+                <span>
+                  <FaRegSave />
+                </span>
+                Save
+              </h1>
+            </div>
+          </div>
+
+          {/* // ! Description of video  */}
+          <div className="w-[64vw]  bg-zinc-200 rounded-lg p-3 px-2 ">
+          <VideoDescription videoData={videoData} />
+          </div>
+         
+
+          {/* {// * Comments of video} */}
+            <div className="p-2 w-[65vw]  ">
+          <CommentBox  videoData={videoData} commentData={commentData} />
+          </div>
+        </div>
+      </div>
+       <div className="flex flex-col ">
+        <div >
+          <LiveChat/>
+        </div>
+        <div className="w-[25vw] mt-20 mr-20 h-[80vh]">
+          <RecommendeVideos/>
+        </div>
+       </div>
+     
+    </div>
+  </div>
+  )
 };
 
 export default Watchpage;

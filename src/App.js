@@ -10,6 +10,8 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
+import SearchResult from "./components/SearchResult";
+import Headlow from "./components/Headlow";
 const App = () => {
   const [categroy, setCategroy] = useState(0);
 
@@ -25,6 +27,10 @@ const App = () => {
         {
           path: "watch",
           element: <Watchpage />,
+        },
+        {
+          path: "search",
+          element: <SearchResult/>,
         },
       ],
     },

@@ -1,10 +1,14 @@
 import React from "react";
 import VideoContainer from "./VideoContainer";
+import Headlow from "./Headlow";
 
 const MainContainer = ({ categroy }) => {
   return (
     <div>
-      <VideoContainer categroy={categroy} />
+       <Headlow/>
+      <div>
+        <VideoContainer categroy={categroy} />
+      </div>
     </div>
   );
 };

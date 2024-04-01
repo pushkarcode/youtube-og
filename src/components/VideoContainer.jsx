@@ -4,6 +4,7 @@ import VideoCard from "./VideoCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setHomeVideo } from "../utils/appSlice";
+import Simmer from "./Simmer";
 
 const VideoContainer = ({ categroy }) => {
   const videos = useSelector((store) => store.app.video);
@@ -23,11 +24,6 @@ const VideoContainer = ({ categroy }) => {
     dispatch(setHomeVideo(raw?.items));
   };
 
-
-  
-
- 
-
   return !isMenuOpen ? (
     <div className="flex flex-wrap w-[98.9vw] ml-4 mx-auto h-[91vh] overflow-y-scroll ">
       {videos?.map((video) => (
@@ -39,7 +35,7 @@ const VideoContainer = ({ categroy }) => {
         </Link>
       ))}
     </div>
-  ) : (
+  ) : videos ? (
     <div className="flex flex-wrap w-[87vw] mx-auto h-[91vh] overflow-y-scroll ">
       {videos?.map((video, index) => (
         <Link
@@ -50,6 +46,8 @@ const VideoContainer = ({ categroy }) => {
         </Link>
       ))}
     </div>
+  ) : (
+    <Simmer />
   );
 };
 

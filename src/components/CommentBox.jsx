@@ -5,7 +5,7 @@ import moment from "moment";
 
 const CommentBox = ({ videoData, commentData }) => {
   return (
-    <div className="p-2 w-[65vw]  ">
+    <div >
       <h1 className="font-bold text-xl text-zinc-800 tracking-wide">
         {value_converter(videoData?.statistics?.commentCount)} Comments
       </h1>

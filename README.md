@@ -25,3 +25,5 @@
 - adding recommendation section
 - Implemented live chat
 - Implemented infinite scrolling
+- Adding searchbar functionality
+- making Responisve for mobile devices

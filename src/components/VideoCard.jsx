@@ -23,7 +23,7 @@ const VideoCard = ({ info }) => {
             {channelTitle}
           </h1>
           <div className="flex items-center gap-x-5">
-            <h1>{value_converter(statistics.viewCount)} views</h1>
+            <h1>{value_converter(statistics?.viewCount)} views</h1>
             <p>{moment(publishedAt).fromNow()}</p>
           </div>
         </div>
