@@ -27,3 +27,8 @@
 - Implemented infinite scrolling
 - Adding searchbar functionality
 - making Responisve for mobile devices
+
+  # if you have a idea to enhance this project
+
+  - Fell free to contribute
+  - Happy Coding🔥🔥🔥
