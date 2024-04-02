@@ -62,10 +62,10 @@ const Headlow = () => {
   };
 
   return (
-    <div className="relative pl-8">
+    <div className="relative lg:pl-12 ml-12">
       <div className="flex items-center">
         <input
-          className="px-5 w-[29vw] py-[.4vw] outline-none border-[1.4px] border-zinc-600 rounded-l-full text-zinc-800 hover:border-blue-500 bg-gradient-to-r from-violet-200 to-pink-200 font-semibold"
+          className="px-5 lg:w-[29vw] w-[55vw] lg:py-[.4vw] outline-none border-[1.4px] border-zinc-600 rounded-l-full text-zinc-800 hover:border-blue-500 bg-gradient-to-r from-violet-200 to-pink-200 font-semibold"
           type="text"
           placeholder="Search"
           value={searchQuery}
@@ -77,7 +77,7 @@ const Headlow = () => {
         <Link to="/search">
           <button
             onClick={setdata}
-            className="px-5 py-[.4vw] border-[1px] border-zinc-600 rounded-r-full text-[1.57vw] text-zinc-600"
+            className="px-5 lg:py-[.4vw] py-1 mt-[.1vw] lg:mt-[.0vw] border-[1px] border-zinc-600 rounded-r-full lg:text-[1.57vw] text-zinc-600"
           >
             <GoSearch />
           </button>
@@ -85,9 +85,9 @@ const Headlow = () => {
       </div>
 
       {showsuggestions && (
-        <div className="absolute bg-gradient-to-r from-violet-200 to-pink-200 w-[29vw] rounded-lg left-[.4%] top-[108%]">
+        <div className="absolute bg-gradient-to-r from-violet-200 to-pink-200 lg:w-[29vw] w-[50vw] rounded-lg left-[4%] top-[108%]">
           {suggesition.map((s) => (
-            <h1 className="flex items-center gap-x-5 p-1 text-lg font-semibold text-zinc-600  mb-1 hover:bg-slate-200 ">
+            <h1 className="flex items-center gap-x-5 lg:p-1 text-lg font-semibold text-zinc-600  mb-1 hover:bg-slate-200 ">
               <span>
                 <CiSearch />
               </span>
