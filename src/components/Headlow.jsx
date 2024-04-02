@@ -77,7 +77,7 @@ const Headlow = () => {
         <Link to="/search">
           <button
             onClick={setdata}
-            className="px-5 lg:py-[.4vw] py-1 mt-[.1vw] lg:mt-[.0vw] border-[1px] border-zinc-600 rounded-r-full lg:text-[1.57vw] text-zinc-600"
+            className="px-5 lg:py-[.4vw] py-1 mt-[.3vw] lg:mt-[.0vw] border-[1px] border-zinc-600 rounded-r-full lg:text-[1.57vw] text-zinc-600"
           >
             <GoSearch />
           </button>

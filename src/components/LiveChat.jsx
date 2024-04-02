@@ -41,7 +41,7 @@ const LiveChat = () => {
         setLiveMessage("");
 
       }}
-       className="lg:p-2 p-2 border-[1.3px] border-black lg:w-[25vw] w-[90vw] lg:mx-0 mx-auto mt-5 flex lg:gap-x-16 gap-x-20 rounded-sm">
+       className="lg:p-2 p-2 border-[1.3px] border-black lg:w-[25vw] w-[87vw] lg:mx-0 mx-auto mt-5 flex lg:gap-x-16 gap-x-12 rounded-sm">
         <input
           className=" border-[1px] border-zinc-500 rounded-sm py-1 px-2 lg:w-[16vw]"
           type="text"
