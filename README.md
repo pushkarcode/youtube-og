@@ -26,6 +26,7 @@
 - Implemented live chat
 - Implemented infinite scrolling
 - Adding searchbar functionality
+- Adding securde api routes
 - making Responisve for mobile devices
 
   # if you have a idea to enhance this project
